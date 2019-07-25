@@ -2,12 +2,15 @@
 //获取应用实例
 const app = getApp()
 
+import data from '../../Data/Index/Index.js'
+
 Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    ...data
   },
   //事件处理函数
   bindViewTap: function() {

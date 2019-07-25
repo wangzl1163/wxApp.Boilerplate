@@ -8,7 +8,7 @@ const commonFun = require('../Common/Common.js')
 const bank = require('../Utils/Bank.js')
 const city = require('../Utils/City.js')
 const globalEnum = require('../Utils/GlobalEnum.js')
-const appApi = require('../Utils/ApiUrls.js')
+const appApi = require('../Apis/ApiUrls.js')
 const httpHelper = require('../Utils/HttpHelper.js')
 require('../Utils/PromiseExtend.js')
 
