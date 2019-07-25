@@ -1,0 +1,23 @@
+/* components/loadMore/loadMore.wxss */
+.loading {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.loading-text {
+  font-size: 24rpx;
+  color: #999;
+  height: 24rpx;
+  line-height: 24rpx;
+  margin-left: 10rpx;
+}
+
+.loading-img {
+  width: 20rpx;
+  height: 20rpx;
+  animation:weuiLoading 1s steps(12, end) infinite;
+}

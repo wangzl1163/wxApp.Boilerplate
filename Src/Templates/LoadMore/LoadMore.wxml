@@ -1,0 +1,7 @@
+<!--components/loadMore/loadMore.wxml-->
+<template name='loadMore'>
+  <view wx:if="{{pageVariable.isShowLoadMore}}" class='loading'>
+    <image class='loading-img' src='../../assets/icon/loading_2x.png'></image>
+    <text class='loading-text'>载入中……</text>
+  </view>
+</template>

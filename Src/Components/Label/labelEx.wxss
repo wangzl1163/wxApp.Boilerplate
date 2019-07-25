@@ -1,0 +1,28 @@
+/* Component/labelEx.wxss */
+.labelList{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 0;
+  height: auto;
+  background-color: blue;
+  /*padding-left: 20rpx;*/
+  font-size: 30rpx;
+}
+.labelList view{
+  display: inline-block;
+}
+.labelEx{
+  display: block;
+  width: 140rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  margin-right: 20rpx;
+}
+.labelEx-text{
+  display: block;
+  width: auto;
+  line-height: 60rpx;
+}

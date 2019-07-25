@@ -1,0 +1,52 @@
+var commonFilter = {};
+
+//idStr:多个id以,间隔的字符串；返回值：相关的name组成的字符串；dataArr:[{id:'',name:''},...]
+commonFilter.idToName = function(idStr, dataArr) {
+  if (idStr == undefined) {
+    return idStr;
+  }
+
+  var idArr = [];
+  if (idStr.indexOf(',') == -1) {
+    idArr.push(idStr);
+  } else {
+    idArr = idStr.split(',');
+  }
+  var nameStr = '';
+  for (var i = 0; i < idArr.length; i++) {
+    for (var j = 0; j < dataArr.length; j++) {
+      if (idArr[i] == dataArr[j].id) {
+        if (i < idArr.length - 1) {
+          nameStr = nameStr + dataArr[j].name + '、';
+        } else {
+          nameStr = nameStr + dataArr[j].name;
+        }
+      }
+    }
+  }
+
+  return nameStr;
+};
+
+commonFilter.toString = function(num) {
+  if ((typeof(num) == 'number')) {
+    return num.toString(10);
+  } else {
+    return num;
+  }
+};
+
+/**
+ * 获取字符串中的最后一个字符
+ */
+commonFilter.getStrLast = function(name) {
+  var arr = name.split('');
+  return arr[arr.length - 1];
+};
+
+// 过滤null、undefined
+commonFilter.wipeOffEmpty = function(value) { 
+  return value ? value : '';
+}
+
+module.exports = commonFilter

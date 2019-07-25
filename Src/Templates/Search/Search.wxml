@@ -1,0 +1,14 @@
+<template name='searchModule'>
+  <view class='searchView'>
+    <view class='search-sub'>
+      <image class='searchBtn' src="../../assets/icon/search_2x.png" bindtap="searchFn" />
+      <input class='searchInput' focus='{{true}}' bindinput="searchInput" placeholder='{{variable.placeholder}}' value="{{variable.inputValue}}" />
+      <view class='clearkey-view'>
+        <image id="clearKeys" class='{{variable.isShowClear?"show-clear":"hide-clear"}}' src='../../assets/icon/clear_2x.png' catchtap='clearInput'></image>
+      </view>
+    </view>
+    <view class='search-text' bindtap='searchFn'>
+      <text>搜索</text>
+    </view>
+  </view>
+</template>

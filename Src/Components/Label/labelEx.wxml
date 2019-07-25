@@ -1,0 +1,6 @@
+<!--Component/labelEx.wxml-->
+<view class='labelList' style='background-color:{{ backgroundColor }};width:{{ componentWidth }};font-size:{{ fontSize }}'>
+  <view id='{{ item.id }}' class='labelEx' style='background-color:{{ variable.isLabelCheckedBackgroundFill?item.labelColor:labelUncheckedColor }};width:{{ labelWidth }};height:{{ labelHeight }};line-height:{{ labelHeight }};margin-bottom:{{labelMarginBottom}};border-radius:{{borderRadius}}; border-width: {{borderWidth}};border-style: {{borderStyle}};border-color:{{ item.isSelected?item.labelColor:borderColor}}; color:{{ item.isSelected?item.labelColor:item.labelCheckedFontColor}};' catchtap='clickEvent' wx:for='{{ labelList }}' wx:key = "text">
+    <text class='labelEx-text' style='height:{{ labelHeight }};line-height:{{ labelHeight }};'>{{ item.text }}</text>
+  </view>
+</view>
