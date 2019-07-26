@@ -1,9 +1,11 @@
 //app.js
+
+// 加载计时
 const loadTime = {
    totalTime: Date.now(),
    isFirstLoad: true
-} // 加载计时
-import base from './Common/Base.js' // 导入基础引用的模块
+}
+import base from './index.js' // 导入基础模块
 const updateManager = wx.canIUse('getUpdateManager') ? wx.getUpdateManager() : null; // 更新管理器
 const {
    httpHelper,
@@ -69,9 +71,12 @@ App({
 
       var curPages = getCurrentPages();
       var errorDetail = {};
-      for (var i = 2; i < err.split('\n').length; i++) {
+      var errLength = err.split('\n').length
+
+      for (var i = 2; i < errLength; i++) {
          errorDetail[i - 1] = err.split('\n')[i];
       }
+
       // 上报错误信息
       httpHelper.httpRequest.post(appApi.apis.ReportError, {
          loginInfo: this.globalData.loginInfo,
@@ -98,7 +103,6 @@ App({
    },
    globalData: { // 全局数据
       isShowVersionCue: true,
-      utils: base,
       appLoad: loadTime,
       getAppOptions: function() {
          return appOptions
@@ -191,5 +195,6 @@ App({
             });
          });
       }
-   }
+   },
+   utils: base
 })

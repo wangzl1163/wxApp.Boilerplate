@@ -4,19 +4,29 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
 		"autoAudits": false,
+		"uglifyFileName": true,
 		"checkInvalidKey": true,
-		"uglifyFileName": true
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.1",
+	"libVersion": "2.2.1",
 	"appid": "wxf645f8f2584192c1",
-	"projectname": "BiBao.WXApp",
+	"projectname": "wxApp.scaffold",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

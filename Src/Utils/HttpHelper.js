@@ -13,19 +13,23 @@ httpRequest.header = {
 }
 
 function httpLogInfo(url, params, res, method, header) {
-   console.log('当前时间：' + tool.sampleFormatTime(new Date(Date.now())) + '\n当前url:' + url);
-   console.log('头部:', header);
-   console.log('方式：', method);
-   console.log('参数：', params);
-   console.log('结果：', res.data);
+   if (!wx.app_env.isProduction) {
+      console.log('当前时间：' + tool.sampleFormatTime(new Date(Date.now())) + '\n当前url:' + url);
+      console.log('头部:', header);
+      console.log('方式：', method);
+      console.log('参数：', params);
+      console.log('结果：', res.data);
+   }
 }
 
 function httpLogErr(url, params, res, method, header) {
-   console.log('请求发生异常，当前时间：' + tool.sampleFormatTime(new Date(Date.now())) + '\n当前url：' + url);
-   console.log('头部:', header);
-   console.log('方式：', method);
-   console.log('参数：', params);
-   console.log('异常：', res);
+   if (!wx.app_env.isProduction) {
+      console.log('请求发生异常，当前时间：' + tool.sampleFormatTime(new Date(Date.now())) + '\n当前url：' + url);
+      console.log('头部:', header);
+      console.log('方式：', method);
+      console.log('参数：', params);
+      console.log('异常：', res);
+   }
 }
 
 function successCallback(res, url, params, resolve, reject, method, header) {

@@ -1,14 +1,21 @@
 {
    "pages": [
       "Pages/Index/index",
-      "Pages/logs/logs",
+      "Pages/Logs/logs",
       "SubPages/Index/Index"
    ],
    "window": {
       "backgroundTextStyle": "light",
       "navigationBarBackgroundColor": "#fff",
-      "navigationBarTitleText": "WeChat",
+      "navigationBarTitleText": "小程序脚手架",
       "navigationBarTextStyle": "black"
    },
-   "sitemapLocation": "sitemap.json"
+   "sitemapLocation": "sitemap.json",
+   "networkTimeout":{
+      "request": 60000,
+      "downloadFile": 90000,
+      "uploadFile":90000,
+      "connectSocket":60000
+   },
+   "debug":true
 }
