@@ -8,7 +8,6 @@ wx.app_env = {
    isProduction: env.wx_env_production === 1,
    isTest: env.wx_env_test === 1,
    isDevelop: env.wx_env_develop === 1,
-   
 }
 
 Object.freeze(wx.app_env) // 防止环境变量在程序的其他地方被修改
