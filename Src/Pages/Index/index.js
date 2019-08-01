@@ -2,15 +2,13 @@
 //获取应用实例
 const app = getApp()
 
-import data from '../../Data/Index/Index.js'
-
 Page({
   data: {
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    ...data
+     ...require('../../Data/Index/IndexData.js') // 在此处引用，只在该页面运行时才会加载data
   },
   //事件处理函数
   bindViewTap: function() {
