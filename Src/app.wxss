@@ -1,7 +1,7 @@
 /**app.wxss**/
 
 page {
-   height: 100%;
+   height: auto;
    font-family: -apple-system,
                  Roboto,
                  "PingFangSC",
