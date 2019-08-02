@@ -1,4 +1,4 @@
-const tool = require('../Utils/Tools.js');
+const dateTool = require('../Utils/DateUtil.js')
 const globalEnum = require('../Utils/GlobalEnum.js')
 
 const httpRequest = {};
@@ -14,7 +14,7 @@ httpRequest.header = {
 
 function httpLogInfo(url, params, res, method, header) {
    if (!wx.app_env.isProduction) {
-      console.log('当前时间：' + tool.sampleFormatTime(new Date(Date.now())) + '\n当前url:' + url);
+      console.log('当前时间：' + dateTool.sampleFormatTime(new Date(Date.now())) + '\n当前url:' + url);
       console.log('头部:', header);
       console.log('方式：', method);
       console.log('参数：', params);
@@ -24,7 +24,7 @@ function httpLogInfo(url, params, res, method, header) {
 
 function httpLogErr(url, params, res, method, header) {
    if (!wx.app_env.isProduction) {
-      console.log('请求发生异常，当前时间：' + tool.sampleFormatTime(new Date(Date.now())) + '\n当前url：' + url);
+      console.log('请求发生异常，当前时间：' + dateTool.sampleFormatTime(new Date(Date.now())) + '\n当前url：' + url);
       console.log('头部:', header);
       console.log('方式：', method);
       console.log('参数：', params);

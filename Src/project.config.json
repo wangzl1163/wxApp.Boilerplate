@@ -25,7 +25,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.1",
+	"libVersion": "2.6.6",
 	"appid": "wxf645f8f2584192c1",
 	"projectname": "wxApp.scaffold",
 	"debugOptions": {
