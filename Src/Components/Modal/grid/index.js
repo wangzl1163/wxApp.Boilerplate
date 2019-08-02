@@ -2,7 +2,7 @@ Component({
     externalClasses: ['i-class'],
 
     relations: {
-        '../grid-item/index': {
+        '../GridItem/index': {
             type: 'child',
             linked () {
                 this.setGridItemWidth();
@@ -18,7 +18,7 @@ Component({
 
     methods: {
         setGridItemWidth () {
-            const nodes = this.getRelationNodes('../grid-item/index');
+            const nodes = this.getRelationNodes('../GridItem/index');
 
             // const len = nodes.length;
             // if (len < 3) {

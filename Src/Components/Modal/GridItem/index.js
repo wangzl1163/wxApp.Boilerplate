@@ -2,7 +2,7 @@ Component({
     externalClasses: ['i-class'],
 
     relations: {
-        '../grid/index': {
+        '../Grid/index': {
             type: 'parent'
         },
         '../grid-icon/index': {
