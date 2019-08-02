@@ -1,0 +1,8 @@
+<wux-backdrop id="backdrop" transparent="{{ transparent }}" wx:if="{{ mask }}" />
+<wux-animation-group wux-class="{{ classes.wrap }}" in="{{ in }}" classNames="{{ classNames }}">
+   <view class="{{ classes.content }}">
+      <wux-circle wux-class="{{ classes.icon }}" type="{{ icon }}" size="55" color="#fff" wx:if="{{ !isIcon }}" percent="{{ percent }}" strokeWidth="2" backgroundColor="rgba(40,40,40,0)" sAngle="-90" speed="0">{{ percent + '%' }}</wux-circle>
+      <image src="../../../Assets/Icons/right_2x.png" style="width:80rpx;height:80rpx;" wx:else></image>
+      <rich-text class="{{ classes.text }}" nodes="{{text}}" ></rich-text>
+   </view>
+</wux-animation-group>

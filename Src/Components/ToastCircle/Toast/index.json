@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-animation-group": "../AnimationGroup/index",
+        "wux-backdrop": "../Backdrop/index",
+        "wux-circle":"../Circle/index"
+    }
+}
