@@ -5,7 +5,7 @@ const loadTime = {
    totalTime: Date.now(),
    isFirstLoad: true
 }
-import base from './index.js' // 导入基础模块
+import base from '/index.js' // 导入基础模块
 const updateManager = wx.canIUse('getUpdateManager') ? wx.getUpdateManager() : null; // 更新管理器
 const {
    httpHelper,

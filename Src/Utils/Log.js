@@ -1,4 +1,4 @@
-const tool = require('../Utils/Tools.js');
+const tool = require('/Tools.js');
 const logger = wx.canIUse('getLogManager') ? wx.getLogManager() : null;
 
 const log = function(title, msg) {
