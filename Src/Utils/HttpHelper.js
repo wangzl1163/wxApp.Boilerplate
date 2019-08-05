@@ -1,5 +1,5 @@
-const dateTool = require('../Utils/DateUtil.js')
-const globalEnum = require('../Utils/GlobalEnum.js')
+const dateTool = require('/DateUtil.js')
+const globalEnum = require('/GlobalEnum.js')
 
 const httpRequest = {};
 
