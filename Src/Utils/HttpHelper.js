@@ -36,7 +36,7 @@ function successCallback(res, url, params, resolve, reject, method, header) {
    httpLogInfo(url, params, res, method, header);
 
    if (res.data.Code != -10003) {
-      resolve(res);
+      resolve(res.data);
    } else {
       wx.showToast({
          title: '加载数据失败了，请重试',
