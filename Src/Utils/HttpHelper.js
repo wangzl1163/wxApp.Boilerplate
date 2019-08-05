@@ -1,15 +1,22 @@
 const dateTool = require('/DateUtil.js')
 const globalEnum = require('/GlobalEnum.js')
+const systemInfo = JSON.stringify(wx.getSystemInfoSync())
 
 const httpRequest = {};
 
-httpRequest.method = {
+const httpMethod = {
    get: 'GET',
    post: 'POST'
 }
 
-httpRequest.header = {
-   phoneInfo: JSON.stringify(wx.getSystemInfoSync())
+const config = {
+   header: {
+      'contentType': 'application/json', // 默认json，可以修改
+      'getAuthorization': () => wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken == undefined ? 'BasicAuth' : 'BasicAuth ' + wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken,
+      'phoneInfo': systemInfo
+   },
+   dataType: 'json', // 返回的数据格式，默认json，可修改
+   responseType: 'text', // 响应的数据类型，默认text，可修改
 }
 
 function httpLogInfo(url, params, res, method, header) {
@@ -60,31 +67,25 @@ function failCallback(res, url, params, resolve, reject, method, header) {
 
 //get请求
 httpRequest.get = (url, params) => {
+   let header = { // header采用拼接是为了防止本地存储的loginInfo被其他地方修改了而不能得到最新
+      'content-type': config.header.contentType,
+      'Authorization': config.header.getAuthorization(),
+      'PhoneInfo': config.header.phoneInfo
+   }
+
    var promise = new Promise((resolve, reject) => {
       wx.request({
          url: url,
          data: params,
-         method: httpRequest.method.get,
-         header: {
-            'content-type': 'application/json',
-            'Authorization': wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken == undefined ? 'BasicAuth' : 'BasicAuth ' + wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken,
-            'PhoneInfo': httpRequest.header.phoneInfo
-         },
-         dataType: 'json',
-         responseType: 'text',
+         method: httpMethod.get,
+         header: header,
+         dataType: config.dataType,
+         responseType: config.responseType,
          success: function(res) {
-            successCallback(res, url, params, resolve, reject, httpRequest.method.get, {
-               'content-type': 'application/json',
-               'Authorization': wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken == undefined ? 'BasicAuth' : 'BasicAuth ' + wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken,
-               'PhoneInfo': httpRequest.header.phoneInfo
-            });
+            successCallback(res, url, params, resolve, reject, httpMethod.get, header);
          },
          fail: function(res) {
-            failCallback(res, url, params, resolve, reject, httpRequest.method.get, {
-               'content-type': 'application/json',
-               'Authorization': wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken == undefined ? 'BasicAuth' : 'BasicAuth ' + wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken,
-               'PhoneInfo': httpRequest.header.phoneInfo
-            });
+            failCallback(res, url, params, resolve, reject, httpMethod.get, header);
          }
       });
    });
@@ -93,31 +94,25 @@ httpRequest.get = (url, params) => {
 
 //post请求
 httpRequest.post = (url, params) => {
+   let header = { // header采用拼接是为了防止本地存储的loginInfo被其他地方修改了而不能得到最新
+      'content-type': config.header.contentType,
+      'Authorization': config.header.getAuthorization(),
+      'PhoneInfo': config.header.phoneInfo
+   }
+
    var promise = new Promise((resolve, reject) => {
       wx.request({
          url: url,
          data: params,
-         method: httpRequest.method.post,
-         header: {
-            'content-type': 'application/json',
-            'Authorization': wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken == undefined ? 'BasicAuth' : 'BasicAuth ' + wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken,
-            'PhoneInfo': httpRequest.header.phoneInfo
-         },
-         dataType: 'json',
-         responseType: 'text',
+         method: httpMethod.post,
+         header: header,
+         dataType: config.dataType,
+         responseType: config.responseType,
          success: function(res) {
-            successCallback(res, url, params, resolve, reject, httpRequest.method.post, {
-               'content-type': 'application/json',
-               'Authorization': wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken == undefined ? 'BasicAuth' : 'BasicAuth ' + wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken,
-               'PhoneInfo': httpRequest.header.phoneInfo
-            });
+            successCallback(res, url, params, resolve, reject, httpMethod.post, header);
          },
          fail: function(res) {
-            failCallback(res, url, params, resolve, reject, httpRequest.method.post, {
-               'content-type': 'application/json',
-               'Authorization': wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken == undefined ? 'BasicAuth' : 'BasicAuth ' + wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken,
-               'PhoneInfo': httpRequest.header.phoneInfo
-            });
+            failCallback(res, url, params, resolve, reject, httpMethod.post, header);
          }
       });
    });
