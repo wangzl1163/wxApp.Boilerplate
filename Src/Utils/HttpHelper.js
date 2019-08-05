@@ -2,8 +2,6 @@ const dateTool = require('/DateUtil.js')
 const globalEnum = require('/GlobalEnum.js')
 const systemInfo = JSON.stringify(wx.getSystemInfoSync())
 
-const httpRequest = {};
-
 const httpMethod = {
    get: 'GET',
    post: 'POST'
@@ -48,7 +46,7 @@ function successCallback(res, url, params, resolve, reject, method, header) {
       wx.showToast({
          title: '加载数据失败了，请重试',
          icon: 'none'
-      });
+      })
    }
 }
 
@@ -61,62 +59,50 @@ function failCallback(res, url, params, resolve, reject, method, header) {
          icon: 'none'
       });
    } else {
-      reject(res);
+      reject(res)
    }
+}
+
+const httpRequest = (url, {
+   data = {},
+   method = httpMethod.get,
+   dataType = config.dataType,
+   responseType = config.responseType,
+   header = { // header采用拼接是为了防止本地存储的loginInfo被其他地方修改了而不能得到最新
+      'content-type': config.header.contentType,
+      'Authorization': config.header.getAuthorization(),
+      'PhoneInfo': config.header.phoneInfo
+   }
+} = {}) => {
+
+   let promise = new Promise((resolve, reject) => {
+      wx.request({
+         url: url,
+         data: data,
+         method: method,
+         header: header,
+         dataType: dataType,
+         responseType: responseType,
+         success: function(res) {
+            successCallback(res, url, data, resolve, reject, httpMethod.get, header);
+         },
+         fail: function(res) {
+            failCallback(res, url, data, resolve, reject, httpMethod.get, header);
+         }
+      })
+   })
+
+   return promise
 }
 
 //get请求
 httpRequest.get = (url, params) => {
-   let header = { // header采用拼接是为了防止本地存储的loginInfo被其他地方修改了而不能得到最新
-      'content-type': config.header.contentType,
-      'Authorization': config.header.getAuthorization(),
-      'PhoneInfo': config.header.phoneInfo
-   }
-
-   var promise = new Promise((resolve, reject) => {
-      wx.request({
-         url: url,
-         data: params,
-         method: httpMethod.get,
-         header: header,
-         dataType: config.dataType,
-         responseType: config.responseType,
-         success: function(res) {
-            successCallback(res, url, params, resolve, reject, httpMethod.get, header);
-         },
-         fail: function(res) {
-            failCallback(res, url, params, resolve, reject, httpMethod.get, header);
-         }
-      });
-   });
-   return promise;
-};
+   return httpRequest(url,{data:params})
+}
 
 //post请求
 httpRequest.post = (url, params) => {
-   let header = { // header采用拼接是为了防止本地存储的loginInfo被其他地方修改了而不能得到最新
-      'content-type': config.header.contentType,
-      'Authorization': config.header.getAuthorization(),
-      'PhoneInfo': config.header.phoneInfo
-   }
-
-   var promise = new Promise((resolve, reject) => {
-      wx.request({
-         url: url,
-         data: params,
-         method: httpMethod.post,
-         header: header,
-         dataType: config.dataType,
-         responseType: config.responseType,
-         success: function(res) {
-            successCallback(res, url, params, resolve, reject, httpMethod.post, header);
-         },
-         fail: function(res) {
-            failCallback(res, url, params, resolve, reject, httpMethod.post, header);
-         }
-      });
-   });
-   return promise;
+   return httpRequest(url, { data: params, method: httpMethod.post})
 }
 
 module.exports = {
