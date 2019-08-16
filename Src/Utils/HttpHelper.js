@@ -18,35 +18,33 @@ const config = {
 }
 
 function httpLogInfo(url, params, res, method, header) {
-   if (!wx.app_env.isProduction) {
-      console.log('当前时间：' + dateTool.sampleFormatTime(new Date(Date.now())) + '\n当前url:' + url);
-      console.log('头部:', header);
-      console.log('方式：', method);
-      console.log('参数：', params);
-      console.log('结果：', res.data);
-   }
+   console.log('当前时间：' + dateTool.sampleFormatTime(new Date(Date.now())) + '\n当前url:' + url);
+   console.log('头部:', header);
+   console.log('方式：', method);
+   console.log('参数：', params);
+   console.log('结果：', res.data);
 }
 
 function httpLogErr(url, params, res, method, header) {
-   if (!wx.app_env.isProduction) {
-      console.log('请求发生异常，当前时间：' + dateTool.sampleFormatTime(new Date(Date.now())) + '\n当前url：' + url);
-      console.log('头部:', header);
-      console.log('方式：', method);
-      console.log('参数：', params);
-      console.log('异常：', res);
-   }
+   console.log('请求发生异常，当前时间：' + dateTool.sampleFormatTime(new Date(Date.now())) + '\n当前url：' + url);
+   console.log('头部:', header);
+   console.log('方式：', method);
+   console.log('参数：', params);
+   console.log('异常：', res);
 }
 
 function successCallback(res, url, params, resolve, reject, method, header) {
    httpLogInfo(url, params, res, method, header);
 
-   if (res.data.Code != -10003) {
-      resolve(res.data);
+   if (res.statusCode === 200 && res.data.Code != -10003) {
+      return resolve(res.data);
    } else {
       wx.showToast({
          title: '加载数据失败了，请重试',
          icon: 'none'
       })
+
+      return reject(res)
    }
 }
 
@@ -59,7 +57,7 @@ function failCallback(res, url, params, resolve, reject, method, header) {
          icon: 'none'
       });
    } else {
-      reject(res)
+      return reject(res)
    }
 }
 
@@ -97,12 +95,17 @@ const httpRequest = (url, {
 
 //get请求
 httpRequest.get = (url, params) => {
-   return httpRequest(url,{data:params})
+   return httpRequest(url, {
+      data: params
+   })
 }
 
 //post请求
 httpRequest.post = (url, params) => {
-   return httpRequest(url, { data: params, method: httpMethod.post})
+   return httpRequest(url, {
+      data: params,
+      method: httpMethod.post
+   })
 }
 
 module.exports = {
