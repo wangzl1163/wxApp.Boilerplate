@@ -1,8 +1,7 @@
 {
    "pages": [
       "Pages/Index/index",
-      "Pages/Logs/logs",
-      "SubPages/Index/Index"
+      "Pages/Mine/Mine"
    ],
    "window": {
       "backgroundTextStyle": "light",
@@ -10,12 +9,47 @@
       "navigationBarTitleText": "小程序脚手架",
       "navigationBarTextStyle": "black"
    },
+   "tabBar": {
+      "color": "#999999",
+      "selectedColor": "#40A0EE",
+      "backgroundColor": "#FFFFFF",
+      "borderStyle": "black",
+      "list": [
+         {
+            "pagePath": "Pages/Index/index",
+            "iconPath": "/Assets/Icons/index_2x.png",
+            "selectedIconPath": "/Assets/Icons/index_focus_2x.png",
+            "text": "首页"
+         },
+         {
+            "pagePath": "Pages/Mine/Mine",
+            "iconPath": "/Assets/Icons/me_2x.png",
+            "selectedIconPath": "/Assets/Icons/me_focus_2x.png",
+            "text": "我的"
+         }
+      ]
+   },
    "sitemapLocation": "sitemap.json",
-   "networkTimeout":{
+   "networkTimeout": {
       "request": 60000,
       "downloadFile": 90000,
-      "uploadFile":90000,
-      "connectSocket":60000
+      "uploadFile": 90000,
+      "connectSocket": 60000
    },
-   "debug":true
+   "subpackages": [
+      {
+         "root": "SubPackages/ModuleA",
+         "pages": [
+            "Index/Index"
+         ],
+         "independent": true
+      },
+      {
+         "root": "SubPackages/PackageA",
+         "pages": [
+            "Index/Index"
+         ]
+      }
+   ],
+   "debug": true
 }
