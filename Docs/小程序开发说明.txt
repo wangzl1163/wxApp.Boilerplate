@@ -1,113 +1,113 @@
-一、开发环境
+﻿一、开发环境
 
     a. 开发工具：微信web开发者工具
     b. 基础库版本：2.6.6
 
 二、整体架构
 
-	a. Apis：api目录
-    b. Assets：资源目录
-    c. Common：公共方法目录
-    d. Components：组件目录
-	e. Config：环境配置目录
-	f. Data：数据目录
-	g. Enums：枚举目录
-    h. Filters：过滤器目录
-	i. Libs：依赖库目录
-    j. Pages：页面目录
-	k. SubPackages：分包目录
-    l. Templates：模板目录
-    m. Utils：工具目录
-    n. app.js：小程序入口文件
-    o. app.json：小程序全局配置文件
-    p. app.wxss：小程序全局样式文件
-	q. index.js：工具加载器
-    r. project.config.json：小程序项目配置文件
-	s. sitemap.json：小程序sitemap配置文件
+    a.    Apis：api目录
+    b.    Assets：资源目录
+    c.    Common：公共方法目录
+    d.    Components：组件目录
+    e.    Config：环境配置目录
+    f.     Data：数据目录
+    g.    Enums：枚举目录
+    h.    Filters：过滤器目录
+    i.     Libs：依赖库目录
+    j.     Pages：页面目录
+    k.    SubPackages：分包目录
+    l.     Templates：模板目录
+    m.   Utils：工具目录
+    n.    app.js：小程序入口文件
+    o.    app.json：小程序全局配置文件
+    p.    app.wxss：小程序全局样式文件
+    q.    index.js：工具加载器
+    r.     project.config.json：小程序项目配置文件
+    s.     sitemap.json：小程序sitemap配置文件
 
 三、模块详情
 	
-	|-Apis：api目录
-	|	|
-	|	|---ApiUrls.js：api地址
-	|	|
-	|	|---Domain.js：域名
-	|
+    |-Apis：api目录
+    |	|
+    |	|---ApiUrls.js：api地址
+    |	|
+    |	|---Domain.js：域名
+    |
     |-Assets：资源目录
-    |   |
-    |   |---Icons：图标目录，包含所有程序图标
-    |   |
-    |   |---Images：图片目录，包含所有程序图片
+    |           |
+    |   	|---Icons：图标目录，包含所有程序图标
+    |   	|
+    |   	|---Images：图片目录，包含所有程序图片
     |
     |-Common：公共方法目录
-	|	|
-	|	|---Common.js：公共方法
-	|	|
-	|	|---WxFun.js：wx方法的封装
+    |	|
+    |	|---Common.js：公共方法
+    |	|
+    |	|---WxFun.js：wx方法的封装
     |
     |-Components：组件目录
-    |   |
-    |   |---Button：按钮组件
-    |   |
-    |   |---ImgLoader：图片预加载组件
-    |   |
-    |   |---Label：选择标签组件
-    |   |
-    |   |---Modal：模态框组件
-	|	|
-	|	|---ToastCircle：进度提示组件
+    |   	|
+    |   	|---Button：按钮组件
+    |   	|
+    |   	|---ImgLoader：图片预加载组件
+    |   	|
+    |   	|---Label：选择标签组件
+    |   	|
+    |   	|---Modal：模态框组件
+    |	|
+    |	|---ToastCircle：进度提示组件
     |
-	|-Config：环境配置目录
-	|	|
-	|	|---env.config.js：环境配置文件
-	|	
+    |-Config：环境配置目录
+    |	|
+    |	|---env.config.js：环境配置文件
+    |	
     |-Filters：过滤器目录
-	|	|
-	|	|---CommonFilter.wxs：公共过滤器
+    |	|
+    |	|---CommonFilter.wxs：公共过滤器
     |
-	|-Libs：依赖库目录
-	|	|
-	|	|---Bank.js：银行名称js库
-	|	|
-	|	|---City.js：城市/地区js库
-	|	
+    |-Libs：依赖库目录
+    |	|
+    |	|---Bank.js：银行名称js库
+    |	|
+    |	|---City.js：城市/地区js库
+    |	
     |-Pages：页面目录
-    |   |
-    |   |---Index：小程序首页
-    |   |
-    |   |---Mine：“我”-页面
+    |   	|
+    |   	|---Index：小程序首页
+    |   	|
+    |   	|---Mine：“我”-页面
     |   
-	|-SubPackages：分包目录
-	|	|
-	|	|---ModuleA：独立分包示例目录
-	|	|
-	|	|---PackageA:普通分包示例目录
-	|	
+    |-SubPackages：分包目录
+    |	|
+    |	|---ModuleA：独立分包示例目录
+    |	|
+    |	|---PackageA:普通分包示例目录
+    |	
     |-Templates：模板目录
-    |   |
-    |   |---LoadMore：加载更多，底部提示模板
-    |   |
-    |   |---Search：搜索模板
+    |   	|
+    |   	|---LoadMore：加载更多，底部提示模板
+    |   	|
+    |   	|---Search：搜索模板
     |   
     |-Utils：工具
-        |
-        |---RegExp.js：正则验证
-        |
-        |---DateTimePicker.js：日期-时间选择器
-        |
-        |---PromiseExtend.js：Promise扩展
-        |
-        |---DateUtil.js：日期工具
-        |
-        |---Tools.js：工具方法
-        |
-        |---HttpHelper.js：http请求工具
-        |
-        |---Log.js：日志工具
-        |
-        |---Version.js：版本工具
-		|
-		|---ImgUtil：图片工具
+        	|
+        	|---RegExp.js：正则验证
+        	|
+        	|---DateTimePicker.js：日期-时间选择器
+        	|
+        	|---PromiseExtend.js：Promise扩展
+        	|
+        	|---DateUtil.js：日期工具
+        	|
+        	|---Tools.js：工具方法
+        	|
+        	|---HttpHelper.js：http请求工具
+        	|
+        	|---Log.js：日志工具
+        	|
+        	|---Version.js：版本工具
+	|
+	|---ImgUtil：图片工具
 
 
 四、接口调用
@@ -115,13 +115,13 @@
 	
     内容如下：
     const domains = require('./Domain.js')
-	console.log('小程序当前域名：',domains)
+    console.log('小程序当前域名：',domains)
 
-	var apis = {
-		userLogin: domains.apiDomain + '/api/User/UserLogin', // 用户登录
-	}
+    var apis = {
+	userLogin: domains.apiDomain + '/api/User/UserLogin', // 用户登录
+    }
 
-	module.exports = {
-		apis: apis,
-		domains: domains
-	}
+    module.exports = {
+	apis: apis,
+	domains: domains
+    }
