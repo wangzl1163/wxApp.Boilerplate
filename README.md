@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+﻿# wxApp.Boilerplate
 
 You can use the [editor on GitHub](https://github.com/wangzl1163/wxApp.scaffold/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
