@@ -1,5 +1,5 @@
 const dateTool = require('/DateUtil.js')
-const globalEnum = require('/GlobalEnum.js')
+const globalEnum = require('../Enums/GlobalEnum.js')
 const systemInfo = JSON.stringify(wx.getSystemInfoSync())
 
 const httpMethod = {

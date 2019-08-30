@@ -22,23 +22,25 @@ const regExp = require('/Utils/RegExp.js')
 const tools = require('/Utils/Tools.js')
 const wxFun = require('/Common/WxFun.js')
 const commonFun = require('/Common/Common.js')
-const bank = require('/Utils/Bank.js')
-const city = require('/Utils/City.js')
-const globalEnum = require('./Utils/GlobalEnum.js')
+const globalEnum = require('./Enums/GlobalEnum.js')
 const appApi = require('/Apis/ApiUrls.js')
 const httpHelper = require('/Utils/HttpHelper.js')
 require('/Utils/PromiseExtend.js')
 
-module.exports = {
+const utils = {
    version,
    logger,
    wxFun,
    commonFun,
    regExp,
    tools,
-   bank,
-   city,
    globalEnum,
    httpHelper,
    appApi
 }
+
+// 小程序的独立分包中getAPP()无法获取到真正的APP实例，故改为挂载到wx上
+wx.utils = utils
+Object.freeze(wx.utils)
+
+module.exports = utils

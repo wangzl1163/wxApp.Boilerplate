@@ -1,7 +1,7 @@
 // 公共方法
 const appApi = require('../Apis/ApiUrls.js')
 const httpHelper = require('../Utils/HttpHelper.js')
-const globalEnum = require('../Utils/GlobalEnum.js')
+const globalEnum = require('../Enums/GlobalEnum.js')
 
 
 var commonFun = {}
