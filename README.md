@@ -1,6 +1,6 @@
 ﻿# wxApp.Boilerplate（WXBP）
 
-wxApp.Boilerplate是基于微信小程序原生框架设计的通用程序框架。
+wxApp.Boilerplate是基于微信小程序原生框架设计的通用小程序框架。
 
 ###### 模块化设计
 
