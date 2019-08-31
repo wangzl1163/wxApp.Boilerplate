@@ -15,15 +15,16 @@
     h.    Filters：过滤器目录
     i.    Libs：依赖库目录
     j.    Pages：页面目录
-    k.    SubPackages：分包目录
-    l.    Templates：模板目录
-    m.    Utils：工具目录
-    n.    app.js：小程序入口文件
-    o.    app.json：小程序全局配置文件
-    p.    app.wxss：小程序全局样式文件
-    q.    index.js：工具加载器
-    r.    project.config.json：小程序项目配置文件
-    s.    sitemap.json：小程序sitemap配置文件
+    k.    Service：Service目录
+    l.    SubPackages：分包目录
+    m.    Templates：模板目录
+    n.    Utils：工具目录
+    o.    app.js：小程序入口文件
+    p.    app.json：小程序全局配置文件
+    q.    app.wxss：小程序全局样式文件
+    r.    index.js：工具加载器
+    s.    project.config.json：小程序项目配置文件
+    t.    sitemap.json：小程序sitemap配置文件
 
 三、模块详情
 	
@@ -77,6 +78,10 @@
     |   |
     |   |---Mine：“我”-页面
     |   
+    |-Service：Service目录
+    |   |
+    |   |---BaseService.js：Service基础类
+    |
     |-SubPackages：分包目录
     |	|
     |	|---ModuleA：独立分包示例目录
