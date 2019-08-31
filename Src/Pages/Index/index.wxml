@@ -8,6 +8,7 @@
     </block>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}{{aaa}}</text>
+    <text class="user-motto">{{motto}}</text>
   </view>
+  <navigator url="../../SubPackages/ModuleA/Index/Index">测试独立分包</navigator>
 </view>
