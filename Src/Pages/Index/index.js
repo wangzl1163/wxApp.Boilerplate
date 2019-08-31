@@ -1,6 +1,8 @@
 //index.js
 //获取应用实例
 const app = getApp()
+import IndexService from '../../Service/Index/Index.js'
+let indexService = null
 
 Page({
   data: {
@@ -17,6 +19,8 @@ Page({
     })
   },
   onLoad: function () {
+     indexService = new IndexService()
+     indexService.setValue()
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -43,6 +47,9 @@ Page({
         }
       })
     }
+  },
+  onShow(){
+     indexService.printValue()
   },
   getUserInfo: function(e) {
     console.log(e)
