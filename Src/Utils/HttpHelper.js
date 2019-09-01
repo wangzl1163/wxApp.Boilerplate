@@ -56,9 +56,9 @@ function failCallback(res, url, params, resolve, reject, method, header) {
          title: '网络无法连接服务器，请稍后再试',
          icon: 'none'
       });
-   } else {
-      return reject(res)
    }
+
+   return reject(res)
 }
 
 const httpRequest = (url, {
@@ -73,7 +73,7 @@ const httpRequest = (url, {
    }
 } = {}) => {
 
-   let promise = new Promise((resolve, reject) => {
+   const promise = new Promise((resolve, reject) => {
       wx.request({
          url: url,
          data: data,
@@ -81,11 +81,11 @@ const httpRequest = (url, {
          header: header,
          dataType: dataType,
          responseType: responseType,
-         success: function(res) {
-            successCallback(res, url, data, resolve, reject, httpMethod.get, header);
+         success(res) {
+            successCallback(res, url, data, resolve, reject, method, header);
          },
-         fail: function(res) {
-            failCallback(res, url, data, resolve, reject, httpMethod.get, header);
+         fail(res) {
+            failCallback(res, url, data, resolve, reject, method, header);
          }
       })
    })
@@ -94,20 +94,22 @@ const httpRequest = (url, {
 }
 
 //get请求
-httpRequest.get = (url, params) => {
+httpRequest.get = (url, params = {}, config = {}) => {
    return httpRequest(url, {
-      data: params
+      data: params,
+      ...config
    })
 }
 
 //post请求
-httpRequest.post = (url, params) => {
+httpRequest.post = (url, params = {}, config = {}) => {
    return httpRequest(url, {
       data: params,
-      method: httpMethod.post
+      method: httpMethod.post,
+      ...config
    })
 }
 
 module.exports = {
-   httpRequest: httpRequest,
+   httpRequest,
 }
