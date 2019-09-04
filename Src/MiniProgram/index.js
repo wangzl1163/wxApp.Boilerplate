@@ -14,6 +14,10 @@ Object.freeze(wx.app_env) // 防止环境变量在程序的其他地方被修改
 
 console.log('小程序环境配置：',wx.app_env)
 
+// 挂载云开发环境
+wx.cloud_env = require('/Config/env.cloud.js')
+Object.freeze(wx.cloud_env)
+console.log('小程序云环境配置：', wx.cloud_env)
 
 // 全局基础对象
 const version = require('/Utils/Version.js')

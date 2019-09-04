@@ -19,6 +19,14 @@ var networkType, that, appOptions = {}
 App({
    // 启动时执行
    onLaunch: function(options) {
+      if (wx.cloud) {
+         wx.cloud.init({
+            ...wx.cloud_env
+         })
+      } else {
+         console.error('请使用 2.2.3 或以上的基础库以使用云能力')
+      }
+
       that = this;
       appOptions = options; // 小程序启动时接收的参数
       wx.getNetworkType({ // 获取网络状态信息

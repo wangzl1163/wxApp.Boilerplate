@@ -1,9 +1,8 @@
 {
 	"description": "项目配置文件",
 	"version": "1.0.0",
-	"packOptions": {
-		"ignore": []
-	},
+	"miniprogramRoot": "MiniProgram/",
+   "cloudfunctionRoot": "CloudFunctions/",
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
