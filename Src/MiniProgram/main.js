@@ -12,12 +12,17 @@ wx.app_env = {
 
 Object.freeze(wx.app_env) // 防止环境变量在程序的其他地方被修改
 
-console.log('小程序环境配置：',wx.app_env)
+console.log('小程序环境配置：', wx.app_env)
 
 // 挂载云开发环境
 wx.cloud_env = require('/Config/env.cloud.js')
 Object.freeze(wx.cloud_env)
 console.log('小程序云环境配置：', wx.cloud_env)
+
+// 数据库中的所有集合
+wx.db_collections = require('/Enums/Collections.js')
+Object.freeze(wx.db_collections)
+console.log('小程序数据库集合：', wx.db_collections)
 
 // 全局基础对象
 const version = require('/Utils/Version.js')
@@ -31,7 +36,8 @@ const appApi = require('/Apis/ApiUrls.js')
 const httpHelper = require('/Utils/HttpHelper.js')
 require('/Utils/PromiseExtend.js')
 
-const utils = {
+// 小程序的独立分包中getAPP()无法获取到真正的APP实例，故改为挂载到wx上
+wx.utils = {
    version,
    logger,
    wxFun,
@@ -43,8 +49,4 @@ const utils = {
    appApi
 }
 
-// 小程序的独立分包中getAPP()无法获取到真正的APP实例，故改为挂载到wx上
-wx.utils = utils
 Object.freeze(wx.utils)
-
-module.exports = utils
