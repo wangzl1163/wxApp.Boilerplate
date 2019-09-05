@@ -29,7 +29,8 @@ const appApi = require('/Apis/ApiUrls.js')
 const httpHelper = require('/Utils/HttpHelper.js')
 require('/Utils/PromiseExtend.js')
 
-const utils = {
+// 小程序的独立分包中getAPP()无法获取到真正的APP实例，故改为挂载到wx上
+wx.utils = {
    version,
    logger,
    wxFun,
@@ -40,9 +41,4 @@ const utils = {
    httpHelper,
    appApi
 }
-
-// 小程序的独立分包中getAPP()无法获取到真正的APP实例，故改为挂载到wx上
-wx.utils = utils
 Object.freeze(wx.utils)
-
-module.exports = utils

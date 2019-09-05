@@ -4,7 +4,7 @@ const loadTime = {
    isFirstLoad: true
 }
 
-import base from '/index.js' // 导入基础模块
+import '/main.js' // 导入基础模块
 const {
    httpHelper,
    appApi,
@@ -12,7 +12,7 @@ const {
    tool,
    globalEnum,
    version
-} = base
+} = wx.utils
 
 var networkType, that, appOptions = {}
 
