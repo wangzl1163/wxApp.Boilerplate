@@ -60,6 +60,8 @@
     |-Config：环境配置目录
     |	|
     |	|---env.config.js：环境配置文件
+	|   |
+	|   |---env.cloud.js：云开发环境配置文件
     |	
     |-Filters：过滤器目录
     |	|
