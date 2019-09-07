@@ -29,7 +29,7 @@ commonFun.ocrRecognition = function(filePath, url, successFun) { // 身份证OCR
 /**
  * 登录超时
  */
-commonFun.loginTimeOut = function(res) {
+commonFun.loginTimeOut = function(res,targetUrl='') {
    wx.showModal({
       title: '',
       content: res.data.Code == 9 ? res.data.Message : res.data.Code == 403 ? '登录信息已失效' : res.data.Message,
@@ -37,8 +37,8 @@ commonFun.loginTimeOut = function(res) {
       success: function(res) {
          if (res.confirm) {
             wx.clearStorageSync()
-            wx.reLaunch({
-               url: '../login/login'
+            targetUrl && wx.reLaunch({
+               url: targetUrl
             })
          }
       }

@@ -28,7 +28,7 @@ const devDomains = {
    f: 'http://111.198.29.215:8082'
 }
 
-var domains = null
+let domains = null
 
 if (wx.app_env.isProduction){
    domains = proDomains

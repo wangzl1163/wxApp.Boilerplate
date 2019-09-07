@@ -1,7 +1,7 @@
 //对常用微信小程序API的封装
 
 //显示提示窗口，参数和类型与wx.showToast一致
-function showToast(title, { icon = 'none', imgSrc = '', duration = 3000, success=()=>{} }={}) {
+function showToast(title, { icon = 'none', imgSrc = '', duration = 3000, success = () => { } } = {}) {
    wx.showToast({
       title,
       icon,
