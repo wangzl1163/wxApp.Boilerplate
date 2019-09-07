@@ -24,6 +24,10 @@ wx.db_collections = require('/Enums/Collections.js')
 Object.freeze(wx.db_collections)
 console.log('小程序数据库集合：', wx.db_collections)
 
+// 挂载Service
+wx.Service = require('/Service/BaseService.js')
+Object.freeze(wx.Service)
+
 // 全局基础对象
 const version = require('/Utils/Version.js')
 const logger = require('/Utils/Log.js')
