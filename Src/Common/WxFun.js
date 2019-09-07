@@ -1,23 +1,23 @@
 //对常用微信小程序API的封装
 
 //显示提示窗口，参数和类型与wx.showToast一致
-function showToast(title, icon, imgSrc, duration, cbf) {
+function showToast(title, { icon = 'none', imgSrc = '', duration = 3000, success = () => { } } = {}) {
    wx.showToast({
-      title: title,
-      icon: icon || 'none',
-      image: imgSrc || '',
-      duration: duration ? duration : 3000,
-      success: cbf || function () { }
+      title,
+      icon,
+      image: imgSrc,
+      duration,
+      success
    });
 }
 
 //显示消息模态框，参数和类型与wx.showModal一致
 function showModal(title, content, showCancel, success) {
    wx.showModal({
-      title: title,
-      content: content,
-      showCancel: showCancel,
-      success: success
+      title,
+      content,
+      showCancel,
+      success
    })
 }
 
@@ -34,13 +34,13 @@ function showLoading(title, mask, success, fail, complete) {
 //关闭所有页面并跳转到指定页面，参数和类型与wx.reLaunch一致
 function reLaunch(url) {
    wx.reLaunch({
-      url: url,
+      url,
    })
 }
 
 module.exports = {
-   showToast: showToast,
-   showModal: showModal,
-   showLoading: showLoading,
-   reLaunch: reLaunch
+   showToast,
+   showModal,
+   showLoading,
+   reLaunch
 }
