@@ -25,6 +25,8 @@ const commonFun = require('/Common/Common.js')
 const globalEnum = require('./Enums/GlobalEnum.js')
 const appApi = require('/Apis/ApiUrls.js')
 const httpHelper = require('/Utils/HttpHelper.js')
+const qs = require('./Libs/QS/index.js')
+
 require('/Utils/PromiseExtend.js')
 
 const utils = {
@@ -36,7 +38,8 @@ const utils = {
    tools,
    globalEnum,
    httpHelper,
-   appApi
+   appApi,
+   qs
 }
 
 // 小程序的独立分包中getAPP()无法获取到真正的APP实例，故改为挂载到wx上
