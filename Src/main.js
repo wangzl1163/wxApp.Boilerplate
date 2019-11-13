@@ -14,6 +14,8 @@ Object.freeze(wx.app_env) // 防止环境变量在程序的其他地方被修改
 
 console.log('小程序环境配置：',wx.app_env)
 
+// 扩展Component
+wx.Component = require('/Config/Component.js')
 
 // 全局基础对象
 const version = require('/Utils/Version.js')
@@ -27,7 +29,7 @@ const appApi = require('/Apis/ApiUrls.js')
 const httpHelper = require('/Utils/HttpHelper.js')
 const qs = require('./Libs/QS/Index.js')
 
-require('/Utils/PromiseExtend.js')
+require('/Extend/Promise.js')
 
 const utils = {
    version,
