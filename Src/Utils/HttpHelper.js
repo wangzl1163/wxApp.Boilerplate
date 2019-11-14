@@ -37,14 +37,25 @@ function successCallback(res, url, params, resolve, reject, method, header) {
    httpLogInfo(url, params, res, method, header);
 
    if (res.statusCode === 200 && res.data.Code != -10003) {
-      return resolve(res.data);
+      if (res.data.Code === 1) { // 成功，Code判断的值根据实际api返回进行修改
+         return resolve(res.data.Data)
+      }
+
+      if (res.data.Code === 0) { // 失败
+         wx.showToast({
+            title: res.data.Message,
+            icon: 'none'
+         })
+
+         return reject(res.data.Data)
+      }
    } else {
       wx.showToast({
          title: '加载数据失败了，请重试',
          icon: 'none'
       })
 
-      return reject(res)
+      return reject(res.data.Data)
    }
 }
 

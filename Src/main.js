@@ -17,6 +17,9 @@ console.log('小程序环境配置：',wx.app_env)
 // 挂载BaseService
 wx.Service = require('/Service/BaseService.js')
 
+// 扩展Component
+wx.Component = require('/Config/Component.js')
+
 // 全局基础对象
 const version = require('/Utils/Version.js')
 const logger = require('/Utils/Log.js')
@@ -27,7 +30,9 @@ const commonFun = require('/Common/Common.js')
 const globalEnum = require('./Enums/GlobalEnum.js')
 const appApi = require('/Apis/ApiUrls.js')
 const httpHelper = require('/Utils/HttpHelper.js')
-require('/Utils/PromiseExtend.js')
+const qs = require('./Libs/QS/Index.js')
+
+require('/Extend/Promise.js')
 
 // 小程序的独立分包中getAPP()无法获取到真正的APP实例，故改为挂载到wx上
 wx.utils = {
@@ -39,6 +44,7 @@ wx.utils = {
    tools,
    globalEnum,
    httpHelper,
-   appApi
+   appApi,
+   qs
 }
 Object.freeze(wx.utils)

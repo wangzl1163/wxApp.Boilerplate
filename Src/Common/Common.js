@@ -29,14 +29,23 @@ commonFun.ocrRecognition = function(filePath, url, successFun) { // 身份证OCR
 /**
  * 登录超时
  */
-commonFun.loginTimeOut = function(res,targetUrl='') {
+commonFun.loginTimeOut = function(res, {
+   targetUrl = '',
+   onlyLoginInfo = false
+} = {}) {
    wx.showModal({
       title: '',
       content: res.data.Code == 9 ? res.data.Message : res.data.Code == 403 ? '登录信息已失效' : res.data.Message,
       showCancel: false,
       success: function(res) {
          if (res.confirm) {
-            wx.clearStorageSync()
+
+            if (onlyLoginInfo) {
+               wx.removeStorageSync(feiCheEnmu.storageKeys.loginInfo)
+            } else {
+               wx.clearStorageSync()
+            }
+
             targetUrl && wx.reLaunch({
                url: targetUrl
             })
