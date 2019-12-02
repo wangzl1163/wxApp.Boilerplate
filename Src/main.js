@@ -17,9 +17,6 @@ console.log('小程序环境配置：',wx.app_env)
 // 挂载BaseService
 wx.Service = require('/Service/BaseService.js')
 
-// 扩展Component
-wx.Component = require('/Config/Component.js')
-
 // 全局基础对象
 const version = require('/Utils/Version.js')
 const logger = require('/Utils/Log.js')
@@ -29,7 +26,7 @@ const wxFun = require('/Common/WxFun.js')
 const commonFun = require('/Common/Common.js')
 const globalEnum = require('./Enums/GlobalEnum.js')
 const appApi = require('/Apis/ApiUrls.js')
-const httpHelper = require('/Utils/HttpHelper.js')
+const httpRequest = require('/Utils/HttpHelper.js')
 const qs = require('./Libs/QS/Index.js')
 
 require('/Extend/Promise.js')
@@ -43,8 +40,11 @@ wx.utils = {
    regExp,
    tools,
    globalEnum,
-   httpHelper,
+   httpRequest,
    appApi,
    qs
 }
 Object.freeze(wx.utils)
+
+// 扩展Component
+wx.Component = require('/Config/Component.js')
