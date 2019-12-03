@@ -1,6 +1,6 @@
 // 公共方法
 const appApi = require('../Apis/ApiUrls.js')
-const httpHelper = require('../Utils/HttpHelper.js')
+const httpRequest = require('../Utils/HttpHelper.js')
 const globalEnum = require('../Enums/GlobalEnum.js')
 
 
@@ -55,7 +55,7 @@ commonFun.loginTimeOut = function(res, {
 }
 
 commonFun.tokenCheck = function() {
-   httpHelper.httpRequest.post(appApi.apis.TokenStateCheck, '')
+   httpRequest.post(appApi.apis.TokenStateCheck, '')
       .then((res) => {
          if (res.data.Code == 9 || res.data.Code == 403) {
             commonFun.loginTimeOut(res)
@@ -73,7 +73,7 @@ commonFun.tokenCheck = function() {
  * 获取token
  */
 commonFun.getUserToken = function(token) {
-   httpHelper.httpRequest.get(appApi.apis.GetUserToken).then(res => {
+   httpRequest.get(appApi.apis.GetUserToken).then(res => {
       if (res.data.Code == 1) {
          token.AuthorityToken = res.data.Message
       } else {

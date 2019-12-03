@@ -6,7 +6,7 @@ const loadTime = {
 
 import base from '/main.js' // 导入基础模块
 const {
-   httpHelper,
+   httpRequest,
    appApi,
    logger,
    tool,
@@ -91,7 +91,7 @@ App({
       }
 
       // 上报错误信息
-      httpHelper.httpRequest.post(appApi.apis.ReportError, {
+      httpRequest.post(appApi.apis.ReportError, {
          loginInfo: this.globalData.loginInfo,
          error: {
             errorMessage: err.split('\n')[0],

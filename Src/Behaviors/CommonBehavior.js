@@ -1,7 +1,5 @@
 const {
-   httpHelper: {
-      httpRequest: http
-   },
+   httpRequest,
    appApi,
    globalEnum,
    wxFun,
@@ -77,7 +75,7 @@ module.exports = Behavior({
          wxFun.showLoading('处理数据中')
 
          return new Promise((resolve, reject) => {
-            return http.post(appApi.urls.TokenStateCheck, '')
+            return httpRequest.post(appApi.urls.TokenStateCheck, '')
                .then((res) => {
                   wx.hideLoading()
 

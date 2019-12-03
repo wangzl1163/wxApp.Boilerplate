@@ -2,19 +2,23 @@ const dateTool = require('/DateUtil.js')
 const globalEnum = require('../Enums/GlobalEnum.js')
 const systemInfo = JSON.stringify(wx.getSystemInfoSync())
 
+// 请求方式
 const httpMethod = {
    get: 'GET',
    post: 'POST'
 }
 
-const config = {
+// 默认配置
+const defaultConfig = {
    header: {
       'contentType': 'application/json', // 默认json，可以修改
       'getAuthorization': () => wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken == undefined ? 'BasicAuth' : 'BasicAuth ' + wx.getStorageSync(globalEnum.storageKeys.loginInfo).AuthorityToken,
-      'phoneInfo': systemInfo
+      'systemInfo': systemInfo
    },
    dataType: 'json', // 返回的数据格式，默认json，可修改
    responseType: 'text', // 响应的数据类型，默认text，可修改
+   loading: true, // 是否显示loading动画
+   delay: 1000, // loading动画延迟显示的时间，单位：毫秒（ms）
 }
 
 function httpLogInfo(url, params, res, method, header) {
@@ -75,24 +79,49 @@ function failCallback(res, url, params, resolve, reject, method, header) {
 const httpRequest = (url, {
    data = {},
    method = httpMethod.get,
-   dataType = config.dataType,
-   responseType = config.responseType,
-   header = { // header采用拼接是为了防止本地存储的loginInfo被其他地方修改了而不能得到最新
-      'content-type': config.header.contentType,
-      'Authorization': config.header.getAuthorization(),
-      'PhoneInfo': config.header.phoneInfo
-   }
+   dataType = defaultConfig.dataType,
+   responseType = defaultConfig.responseType,
+   header = {},
+   loading = defaultConfig.loading,
+   delay = defaultConfig.delay
 } = {}) => {
+   const headers = Object.assign({
+      // header采用拼接是为了防止本地存储的loginInfo被其他地方修改了而不能得到最新
+      'content-type': defaultConfig.header.contentType,
+      'Authorization': defaultConfig.header.getAuthorization(),
+      'systemInfo': defaultConfig.header.systemInfo
+   }, header)
+
+   /** 秒级响应不再显示loading弹窗 */
+   let timeoutId = setTimeout(() => {
+      if (loading) {
+         timeoutId = 0
+
+         wx.showLoading({
+            title: '加载中',
+            mask: true
+         })
+      }
+   }, delay)
 
    const promise = new Promise((resolve, reject) => {
       wx.request({
          url: url,
          data: data,
          method: method,
-         header: header,
+         header: headers,
          dataType: dataType,
          responseType: responseType,
          success(res) {
+            loading = false
+
+            // timeoutId为0时说明已经执行了wx.showLoading
+            // 则此时需要调用wx.hideLoading
+            // wx.showToast与wx.showLoading只能存在一个，故fail中不再调用wx.hideLoading
+            if (timeoutId === 0) {
+               wx.hideLoading()
+            }
+
             successCallback(res, url, data, resolve, reject, method, header);
          },
          fail(res) {
@@ -104,7 +133,7 @@ const httpRequest = (url, {
    return promise
 }
 
-//get请求
+/** get请求 */
 httpRequest.get = (url, params = {}, config = {}) => {
    return httpRequest(url, {
       data: params,
@@ -112,7 +141,7 @@ httpRequest.get = (url, params = {}, config = {}) => {
    })
 }
 
-//post请求
+/** post请求 */
 httpRequest.post = (url, params = {}, config = {}) => {
    return httpRequest(url, {
       data: params,
@@ -121,6 +150,4 @@ httpRequest.post = (url, params = {}, config = {}) => {
    })
 }
 
-module.exports = {
-   httpRequest,
-}
+module.exports = httpRequest

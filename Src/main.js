@@ -14,9 +14,6 @@ Object.freeze(wx.app_env) // 防止环境变量在程序的其他地方被修改
 
 console.log('小程序环境配置：',wx.app_env)
 
-// 扩展Component
-wx.Component = require('/Config/Component.js')
-
 // 全局基础对象
 const version = require('/Utils/Version.js')
 const logger = require('/Utils/Log.js')
@@ -26,7 +23,7 @@ const wxFun = require('/Common/WxFun.js')
 const commonFun = require('/Common/Common.js')
 const globalEnum = require('./Enums/GlobalEnum.js')
 const appApi = require('/Apis/ApiUrls.js')
-const httpHelper = require('/Utils/HttpHelper.js')
+const httpRequest = require('/Utils/HttpHelper.js')
 const qs = require('./Libs/QS/Index.js')
 
 require('/Extend/Promise.js')
@@ -39,7 +36,7 @@ const utils = {
    regExp,
    tools,
    globalEnum,
-   httpHelper,
+   httpRequest,
    appApi,
    qs
 }
@@ -47,5 +44,8 @@ const utils = {
 // 小程序的独立分包中getAPP()无法获取到真正的APP实例，故改为挂载到wx上
 wx.utils = utils
 Object.freeze(wx.utils)
+
+// 扩展Component
+wx.Component = require('/Config/Component.js')
 
 module.exports = utils
