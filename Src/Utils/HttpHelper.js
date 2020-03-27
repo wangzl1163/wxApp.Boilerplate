@@ -133,21 +133,15 @@ const httpRequest = (url, {
    return promise
 }
 
-/** get请求 */
-httpRequest.get = (url, params = {}, config = {}) => {
-   return httpRequest(url, {
-      data: params,
-      ...config
-   })
-}
-
-/** post请求 */
-httpRequest.post = (url, params = {}, config = {}) => {
-   return httpRequest(url, {
-      data: params,
-      method: httpMethod.post,
-      ...config
-   })
-}
+// 扩展请求方式
+Object.keys(httpMethod).forEach(method => {
+    httpRequest[method] = (url, params = {}, config = {}) => {
+      return httpRequest(url, {
+         data: params,
+         method: httpMethod[method],
+         ...config
+      })
+   }
+})
 
 module.exports = httpRequest
