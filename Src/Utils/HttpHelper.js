@@ -133,7 +133,7 @@ const httpRequest = (url, {
    return promise
 }
 
-// 扩展请求方式
+// 提供支持的请求方法的别名
 Object.keys(httpMethod).forEach(method => {
     httpRequest[method] = (url, params = {}, config = {}) => {
       return httpRequest(url, {
