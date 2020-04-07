@@ -8,7 +8,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-     ...require('../../Data/Index/IndexData.js') // 在此处引用，只在该页面运行时才会加载data
+     ...require('./Data.js') // 在此处引用，只在该页面运行时才会加载data
   },
   //事件处理函数
   bindViewTap: function() {
