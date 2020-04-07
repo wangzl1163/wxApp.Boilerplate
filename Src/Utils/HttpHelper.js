@@ -118,7 +118,7 @@ const httpRequest = (url, {
             // timeoutId为0时说明已经执行了wx.showLoading
             // 则此时需要调用wx.hideLoading
             // wx.showToast与wx.showLoading只能存在一个，故fail中不再调用wx.hideLoading
-            if (timeoutId === 0){
+            if (timeoutId === 0) {
                wx.hideLoading()
             }
 
@@ -133,21 +133,15 @@ const httpRequest = (url, {
    return promise
 }
 
-/** get请求 */
-httpRequest.get = (url, params = {}, config = {}) => {
-   return httpRequest(url, {
-      data: params,
-      ...config
-   })
-}
-
-/** post请求 */
-httpRequest.post = (url, params = {}, config = {}) => {
-   return httpRequest(url, {
-      data: params,
-      method: httpMethod.post,
-      ...config
-   })
-}
+// 提供支持的请求方法的别名
+Object.keys(httpMethod).forEach(method => {
+    httpRequest[method] = (url, params = {}, config = {}) => {
+      return httpRequest(url, {
+         data: params,
+         method: httpMethod[method],
+         ...config
+      })
+   }
+})
 
 module.exports = httpRequest

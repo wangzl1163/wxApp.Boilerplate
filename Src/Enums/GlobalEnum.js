@@ -9,7 +9,7 @@ GlobalEnum.storageKeys = function() {
 
 GlobalEnum.sceneType = { // 小程序页面加载的场景类型
    local: 1, // 本地打开
-   share: 2, // 分享
+   share: 2, // 分享，需要登录
    shareNoLogin: 3 // 分享，但不需要登录
 }
 
