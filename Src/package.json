@@ -1,0 +1,23 @@
+{
+  "name": "wxbp",
+  "version": "1.0.0",
+  "description": "wxApp.Boilerplate（WXBP）——  微信小程序原生开发通用框架",
+  "main": "main.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangzl1163/wxApp.Boilerplate.git"
+  },
+  "keywords": [
+    "微信小程序",
+    "脚手架",
+    "框架"
+  ],
+  "author": "wangzl1163",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wangzl1163/wxApp.Boilerplate/issues"
+  },
+  "homepage": "https://github.com/wangzl1163/wxApp.Boilerplate#readme",
+  "dependencies": {}
+}

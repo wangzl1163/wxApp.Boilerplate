@@ -24,7 +24,7 @@ const commonFun = require('/Common/Common.js')
 const globalEnum = require('./Enums/GlobalEnum.js')
 const appApi = require('/Apis/ApiUrls.js')
 const httpRequest = require('/Utils/HttpHelper.js')
-const qs = require('./Libs/QS/Index.js')
+const qs = require('./Utils/QS.js')
 
 require('/Extend/Promise.js')
 
