@@ -39,7 +39,7 @@ App({
             console.log('系统信息', res)
             
             // 检测微信版本是否低于目标版本
-            version.checkVersion(res.version, '7.0.3', () => {
+            version.checkVersion(res.version, '7.0.4', () => {
                wx.clearStorageSync()
             })
          }
