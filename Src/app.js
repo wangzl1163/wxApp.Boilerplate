@@ -14,13 +14,13 @@ const {
    version
 } = base
 
-var networkType, that, appOptions = {}
+var networkType = '', appOptions = {}
 
 App({
    // 启动时执行
    onLaunch: function(options) {
-      that = this;
       appOptions = options; // 小程序启动时接收的参数
+
       wx.getNetworkType({ // 获取网络状态信息
          success: function(res) {
             networkType = res.networkType;
@@ -32,8 +32,8 @@ App({
       });
    },
    onShow: function() {
-      var that = this;
       version.upgradeApp(); // 检查更新
+
       wx.getSystemInfo({ // 检查微信版本
          success: function(res) {
             console.log('系统信息', res)
@@ -43,15 +43,15 @@ App({
                wx.clearStorageSync()
             })
          }
-      });
+      })
 
       if (loadTime.isFirstLoad) {
          loadTime.isFirstLoad = false
          console.log('启动加载耗时：', (Date.now() - loadTime.totalTime) * 1.0 / 1000)
       }
    },
-   globalData: { // 全局数据
-      appLoad: loadTime,
+   systemData: { // 全局数据
+      appLoadTime: loadTime,
       getAppOptions: function () {
          return appOptions
       }
@@ -75,6 +75,7 @@ App({
          return '';
       }
    },
+   utils: base,
    onError: function(err) { // 监听错误
       if (logger) {
          logger.log('小程序逻辑层发生异常', err);
