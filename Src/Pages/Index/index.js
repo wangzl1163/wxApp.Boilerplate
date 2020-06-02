@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-const { globalEnum } = app.utils
+const { globalEnum } = wx.utils
 
 Page({
   data: {

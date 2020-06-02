@@ -75,7 +75,6 @@ App({
          return '';
       }
    },
-   utils: base,
    onError: function(err) { // 监听错误
       if (logger) {
          logger.log('小程序逻辑层发生异常', err);
