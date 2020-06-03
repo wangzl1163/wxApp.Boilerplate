@@ -16,3 +16,8 @@ WXBP设计为模块化和可扩展的，提供了基础架构。
     对Component的扩展，支持设置全局Behavior
   * 在Config中的Component.js中设置全局Behavior
   * 创建组件时把Component替换为 wx.Component
+
+## 使用
+  * 克隆代码到本地
+  * 更换appid为自己的小程序的appid
+  * 开发者工具中执行“构建npm”
