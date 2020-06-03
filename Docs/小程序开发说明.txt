@@ -1,7 +1,7 @@
 ﻿一、开发环境
 
     a. 开发工具：微信web开发者工具
-    b. 基础库版本：2.6.6
+    b. 基础库版本：2.8.2
 
 二、整体架构
 
@@ -13,17 +13,17 @@
     f.    Data：数据目录
     g.    Enums：枚举目录
     h.    Filters：过滤器目录
-    i.    Libs：依赖库目录
-    j.    Pages：页面目录
-    k.    SubPackages：分包目录
-    l.    Templates：模板目录
-    m.    Utils：工具目录
-    n.    app.js：小程序入口文件
-    o.    app.json：小程序全局配置文件
-    p.    app.wxss：小程序全局样式文件
-    q.    index.js：工具加载器
-    r.    project.config.json：小程序项目配置文件
-    s.    sitemap.json：小程序sitemap配置文件
+    i.    Pages：页面目录
+    j.    SubPackages：分包目录
+    k.    Templates：模板目录
+    l.    Utils：工具目录
+    m.    app.js：小程序入口文件
+    n.    app.json：小程序全局配置文件
+    o.    app.wxss：小程序全局样式文件
+    p.    index.js：工具加载器
+    q.    project.config.json：小程序项目配置文件
+    r.    sitemap.json：小程序sitemap配置文件
+    s.    package.json: npm包说明文件
 
 三、模块详情
 	
@@ -64,18 +64,14 @@
     |-Filters：过滤器目录
     |	|
     |	|---CommonFilter.wxs：公共过滤器
-    |
-    |-Libs：依赖库目录
-    |	|
-    |	|---Bank.js：银行名称js库
-    |	|
-    |	|---City.js：城市/地区js库
     |	
     |-Pages：页面目录
     |   |
     |   |---Index：小程序首页
     |   |
     |   |---Mine：“我”-页面
+    |   |
+    |   |---Login：登录页面
     |   
     |-SubPackages：分包目录
     |	|
@@ -108,6 +104,11 @@
         |---Version.js：版本工具
         |
         |---ImgUtil：图片工具
+	|
+    	|---Bank.js：银行名称js库
+    	|
+    	|---City.js：城市/地区js库
+        |---QS.js: qs配置
 
 
 四、接口调用
