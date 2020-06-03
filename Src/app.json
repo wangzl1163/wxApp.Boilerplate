@@ -1,7 +1,8 @@
 {
    "pages": [
       "Pages/Index/index",
-      "Pages/Mine/Mine"
+      "Pages/Mine/Mine",
+      "Pages/Login/Login"
    ],
    "window": {
       "backgroundTextStyle": "light",
