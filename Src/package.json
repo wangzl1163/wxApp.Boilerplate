@@ -19,5 +19,7 @@
     "url": "https://github.com/wangzl1163/wxApp.Boilerplate/issues"
   },
   "homepage": "https://github.com/wangzl1163/wxApp.Boilerplate#readme",
-  "dependencies": {}
+  "dependencies": {
+    "qs": "^6.9.4"
+  }
 }
