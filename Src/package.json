@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/wangzl1163/wxApp.Boilerplate#readme",
   "dependencies": {
-    "qs": "^6.9.4"
+    "qs": "^6.9.7"
   }
 }
